@@ -1,10 +1,13 @@
-import React from 'react';
+import './Styles/global.sass'
+
+import MainMenu from './Components/MainMenu/MainMenu'
 
 function App() {
-  return (
-    <div>
-    </div>
-  );
+	return (
+		<div>
+			<MainMenu />
+		</div>
+	)
 }
 
-export default App;
+export default App
