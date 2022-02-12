@@ -1,19 +1,32 @@
-name: build
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
-			with:
-				node-version: '17.x'
-            - name: Build web-app
-			run: |
-				yarn ci
-				yarn build
-            - name: Deploy to ecommerce/
-			uses: peaceiris/actions-gh-pages@v3
-			with:
-				github_token: ${{ secrets.GITHUB_TOKEN }}
-				publish_dir ./build
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: 
+
+    steps:
+    - uses: actions/checkout@v2
+      uses: actions/setup-node@v2
+      with:
+        node-version: [12.x, 14.x, 16.x]
+        cache: 'npm'
+    - name: Build web-app
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test --if-present
+    - name: Deploy to web-app
+      uses: peaceiris/actions-gh-page@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
