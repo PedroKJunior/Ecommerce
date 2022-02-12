@@ -12,7 +12,7 @@ jobs:
                 run: |
                     yarn ci
                     yarn build
-            - name: Deploy to gh-pages
+            - name: Deploy to ecommerce/
                 uses: peaceiris/actions-gh-pages@v3
                 with:
                     github_token: ${{ secrets.GITHUB_TOKEN }}
