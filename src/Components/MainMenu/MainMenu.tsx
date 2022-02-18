@@ -19,7 +19,7 @@ const MainMenu: React.FC = () => {
 
 	return (
 		<div className="main-menu">
-			<img src={Logo} alt="Cubic Magazine" className="logo" />
+			<h1 className="logo">Magazine</h1>
 			<SearchMenu onClick={searchItem} onInputChange={handleChange} />
 			<div className="shopping-cart">
 				<RiShoppingCartFill size={25} />
