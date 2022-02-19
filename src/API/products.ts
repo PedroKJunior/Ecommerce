@@ -1,7 +1,7 @@
 import { Product } from '../Interfaces/IProducts'
 import { api } from './general'
 
-export const getListProducts = async (limiter = 10): Promise<Product[]> => {
+export const getListProducts = async (limiter = 50): Promise<Product[]> => {
 	const { data } = await api.get(`/products?limit=${limiter}`)
 	return data
 }
