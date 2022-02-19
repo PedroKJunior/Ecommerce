@@ -1,0 +1,95 @@
+.product-card
+	width: 19rem
+	height: 28rem
+	background: white
+
+	margin: 50px auto
+
+	border: 2px solid rgba(0,0,0,.1)
+	box-shadow: 0 3px 5px 1px rgba(0,0,0, .1), 0 5px 10px 2px rgba(0,0,0,.08), 0 7px 12px 2px rgba(0,0,0,.02)
+	border-radius: 4px
+	overflow: hidden
+
+	& .card-body
+		padding: 10px
+		display: flex
+		flex-direction: column
+		height: 100%
+
+		& .title
+			text-align: center
+			font-size: 45px
+			transition: all .5s ease-in-out
+			transform: translateY(15px)
+
+		& img
+			margin: 0 auto
+			height: 311px
+			transition: all .5s ease-in-out
+
+		& .price
+			text-align: right
+			margin: 0 5px
+			font-size: 25px
+			transition: all .5s ease-in-out
+			transform: translateY(30px)
+			font-weight: bolder
+
+		& .animation
+			transition: transform .5s ease-in-out
+			transform: translateY(50px)
+			width: 100%
+			height: 100%
+			position: relative
+			margin-top: 15px
+
+			&::after
+				top: 0
+				left: 0
+				content: ""
+				position: absolute
+				border-top: 4px solid #099236
+				width: 0
+				transition: all .5s ease-in-out
+
+			& .description
+				height: 120px
+				overflow: hidden
+				margin: 10px 0
+				position: relative
+				margin-bottom: 35px
+
+				&::after
+					content: ""
+					background: linear-gradient(rgba(0,0,0,0) 65%, rgba(255,255,255,1) 100%)
+					position: absolute
+					top: 0
+					left: 0
+					width: 100%
+					height: 100%
+
+			& a
+				background: #099236
+				border: none
+				font-size: 20px
+				padding: 8px 12px
+				border-radius: 4px
+				color: #f1f1f1
+				cursor: pointer
+
+		&:hover
+			& .animation
+				transform: translateY(0)
+				&::after
+					width: 70%
+
+			& .price
+				transform: translateY(0)
+				font-size: 18px
+
+			& .title
+				font-size: 22px
+				transform: translateY(0)
+
+			& img
+				height: 156px
