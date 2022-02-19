@@ -7,7 +7,6 @@ const Categories = () => {
 		<>
 			<div className="title-categories">
 				<h3>Categorias</h3>
-				<hr />
 			</div>
 			<div className="content-categories">
 				{categoriesList.map((category) => (
