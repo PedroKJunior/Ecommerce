@@ -39,8 +39,8 @@ const Select = ({ valuesList, initialValue, selectValue }: PropsListSelect) => {
 	}, [wrapperRef])
 
 	return (
-		<div className="content-select" ref={wrapperRef} data-testid="select">
-			<div className="select-text" onClick={setShow}>
+		<div className="content-select" ref={wrapperRef}>
+			<div className="select-text" onClick={setShow} data-testid="select">
 				{value}
 				<MdKeyboardArrowDown />
 			</div>
@@ -52,6 +52,7 @@ const Select = ({ valuesList, initialValue, selectValue }: PropsListSelect) => {
 							data-value={item.value}
 							data-id={item._id}
 							onClick={onClick}
+							role="menuitem"
 						>
 							{item.value}
 						</li>
