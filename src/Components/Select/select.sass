@@ -1,0 +1,36 @@
+.content-select
+	position: relative
+	width: 200px
+	height: 35px
+	border-radius: 5px
+	border: 1px solid #999
+	padding: 0 15px
+	background: #fefefe
+
+	& .select-text
+		height: 100%
+		width: 100%
+		display: flex
+		justify-content: space-between
+		align-items: center
+		font-weight: 500
+		cursor: pointer
+
+	& .select-value
+		top: 36px
+		left: 0
+		position: absolute
+		list-style: none
+		border: 1px solid #999
+		width: 100%
+		background: #fefefe
+		border-radius: 2px
+		box-shadow: 0 1px 4px rgba(0,0,0,.09), 0 3px 8px rgba(0,0,0,.06)
+		padding: 3px
+
+		& li
+			padding: 8px 5px
+			cursor: pointer
+
+			&:hover
+				background: rgba(50,50,50,.08)
