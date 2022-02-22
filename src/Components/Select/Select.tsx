@@ -2,27 +2,23 @@ import React, { useState, useRef, useEffect } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
 import { useToggle } from '../../hook/useToggle'
-import { IProductOrder } from '../../Interfaces/IProductOrder'
+import { ISelectList } from '../../Interfaces/ISelectList'
 import './select.sass'
 
-interface PropsListOrderProduct {
-	productOrderList: Array<IProductOrder>
-	initialOrder: string
-	selectOrder(value: number): void
+interface PropsListSelect {
+	valuesList: Array<ISelectList>
+	initialValue: string
+	selectValue(value: number): void
 }
 
-const Select = ({
-	productOrderList,
-	initialOrder,
-	selectOrder,
-}: PropsListOrderProduct) => {
+const Select = ({ valuesList, initialValue, selectValue }: PropsListSelect) => {
 	const wrapperRef = useRef<HTMLDivElement>(null)
-	const [value, setValue] = useState<string>(initialOrder)
+	const [value, setValue] = useState<string>(initialValue)
 	const [show, setShow] = useToggle(false)
 
 	const onClick = (event: React.MouseEvent<HTMLElement>) => {
 		setValue(String(event.currentTarget.dataset.value))
-		selectOrder(Number(event.currentTarget.dataset.id))
+		selectValue(Number(event.currentTarget.dataset.id))
 		setShow()
 	}
 
@@ -50,7 +46,7 @@ const Select = ({
 			</div>
 			{show && (
 				<ul className="select-value">
-					{productOrderList.map((item: IProductOrder) => (
+					{valuesList.map((item: ISelectList) => (
 						<li
 							key={item._id}
 							data-value={item.value}
