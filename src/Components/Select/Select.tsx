@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
-import { useToggle } from '../../hook/useToggle'
 import { ISelectList } from '../../Interfaces/ISelectList'
 import './select.sass'
 
@@ -14,12 +13,12 @@ interface PropsListSelect {
 const Select = ({ valuesList, initialValue, selectValue }: PropsListSelect) => {
 	const wrapperRef = useRef<HTMLDivElement>(null)
 	const [value, setValue] = useState<string>(initialValue)
-	const [show, setShow] = useToggle(false)
+	const [show, setShow] = useState<boolean>(false)
 
 	const onClick = (event: React.MouseEvent<HTMLElement>) => {
 		setValue(String(event.currentTarget.dataset.value))
 		selectValue(Number(event.currentTarget.dataset.id))
-		setShow()
+		setShow(false)
 	}
 
 	useEffect(() => {
@@ -28,7 +27,7 @@ const Select = ({ valuesList, initialValue, selectValue }: PropsListSelect) => {
 				wrapperRef.current &&
 				!wrapperRef.current.contains(event.target as HTMLElement)
 			) {
-				setShow()
+				setShow(false)
 			}
 		}
 
@@ -39,8 +38,13 @@ const Select = ({ valuesList, initialValue, selectValue }: PropsListSelect) => {
 	}, [wrapperRef])
 
 	return (
-		<div className="content-select" ref={wrapperRef}>
-			<div className="select-text" onClick={setShow} data-testid="select">
+		<div
+			className="content-select"
+			onClick={() => setShow(true)}
+			data-testid="select"
+			ref={wrapperRef}
+		>
+			<div className="select-text">
 				{value}
 				<MdKeyboardArrowDown />
 			</div>
