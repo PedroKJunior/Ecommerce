@@ -1,8 +1,12 @@
 import './categories.sass'
+import { categoriesList } from '../../Constants/categoriesList'
 import CategoryCard from '../CategoryCard/CategoryCard'
-import { categoriesList } from './categoriesList'
 
-const Categories = () => {
+interface PropCategory {
+	onClick(event: React.MouseEvent<HTMLDivElement>): void
+}
+
+const Categories = ({ onClick }: PropCategory) => {
 	return (
 		<>
 			<div className="title-categories">
@@ -14,6 +18,8 @@ const Categories = () => {
 						key={category._id}
 						image={category.img}
 						text={category.text}
+						type={category.type}
+						onClick={onClick}
 					/>
 				))}
 			</div>
