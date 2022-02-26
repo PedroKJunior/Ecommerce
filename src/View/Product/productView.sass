@@ -1,0 +1,84 @@
+.content-product-view
+	display: flex
+	width: 80vw
+	margin: 50px 150px
+	background: white
+	padding: 20px
+
+	& .content-image
+		height: calc( 100vh - 220px)
+		width: 50%
+		display: flex
+		justify-content: center
+		background-size: auto 100%
+		background-repeat: no-repeat
+		background-position-x: center
+
+	& .container-informations
+		width: 50%
+		display: flex
+		justify-content: center
+
+		& .content-informations
+			margin: 0 10px
+			width: 100%
+			display: flex
+			justify-content: flex-start
+			flex-direction: column
+
+			& .rating
+				width: 100%
+				height: 50px
+				display: flex
+				align-items: center
+				justify-content: flex-start
+
+				& span
+					margin: 0 10px
+					width: auto
+					font-size: 16px
+
+				& .separator
+					margin: 0 5px 0 15px
+					border-left: 2px solid #cfcfcf
+					height: 23px
+					width: 0
+
+			& .price
+				margin: 15px
+				font-size: 35px
+				font-weight: bold
+				color: #377be0
+
+			& .description
+				margin: 0 10px
+				width: 100%
+				text-align: justify
+				font-size: 20px
+
+			& .content-button
+				display: flex
+				justify-content: flex-end
+				align-items: flex-end
+				height: 100%
+
+				& button
+					margin: 20px 0
+					display: flex
+					align-items: center
+					justify-content: center
+					color: #377be0
+					width: 300px
+					height: 40px
+					border: 2px solid #377be0
+					background: rgba(55, 123, 224, 0.4)
+					font-size: 18px
+					font-weight: 500
+					cursor: pointer
+
+					&:hover
+						background: rgba(55, 123, 224, 0.253)
+
+					& svg
+						fill: #377be0
+						margin-right: 10px
