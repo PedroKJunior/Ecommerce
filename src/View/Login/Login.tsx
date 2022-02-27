@@ -48,6 +48,7 @@ const Login = () => {
 						onChange={handleChange}
 						onClick={() => setError(false)}
 						value={login.user}
+						data-testid="input-user"
 					/>
 				</div>
 				<div className="input">
@@ -59,6 +60,7 @@ const Login = () => {
 						onChange={handleChange}
 						onClick={() => setError(false)}
 						value={login.password}
+						data-testid="input-password"
 					/>
 				</div>
 				<button onClick={handleLogin}>
