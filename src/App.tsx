@@ -1,12 +1,17 @@
+import { BrowserRouter } from 'react-router-dom'
+
+import AppRoutes from './Routes/Routes'
 import './Styles/global.sass'
 
-import MainMenu from './Components/MainMenu/MainMenu'
+//import MainMenu from './Components/MainMenu/MainMenu'
 
 function App() {
 	return (
-		<div>
-			<MainMenu />
-		</div>
+		<BrowserRouter>
+			{/* <MainMenu /> */}
+			{/* <Loading color="#0433FF" /> */}
+			<AppRoutes />
+		</BrowserRouter>
 	)
 }
 
