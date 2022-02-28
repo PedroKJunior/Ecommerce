@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import './productCard.sass'
 import { Product } from '../../Interfaces/IProducts'
@@ -24,7 +25,7 @@ const ProductCard = ({ product }: PropsProduct) => {
 				<span className="price">U$ {product?.price}</span>
 				<div className="animation">
 					<p className="description">{product?.description}</p>
-					<a>Ver mais</a>
+					<Link to={`/products/${product.id}`}>Ver mais</Link>
 				</div>
 			</div>
 		</div>
