@@ -20,7 +20,7 @@ export const getListProducts = async (
 	}
 }
 
-export const getOneProduct = async (id: number): Promise<any> => {
+export const getOneProduct = async (id: string): Promise<any> => {
 	try {
 		const { data } = await api.get(`/products/${id}`)
 		return data
