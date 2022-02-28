@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { RiShoppingCartFill } from 'react-icons/ri'
+import { useParams } from 'react-router-dom'
 
 import { getOneProduct } from '../../API/products'
 import BarRating from '../../Components/Rating/BarRating'
@@ -8,15 +9,16 @@ import './productView.sass'
 
 const ProductView = () => {
 	const [product, setProdutc] = useState<Product>()
+	const { id = '1' } = useParams()
 
 	useEffect(() => {
 		const fetchProduct = async () => {
-			const response = await getOneProduct(2)
+			const response = await getOneProduct(id)
 			setProdutc(response)
 		}
 
 		fetchProduct()
-	}, [])
+	}, [id])
 
 	return (
 		<div className="content-product-view">
