@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { MdLock, MdPerson, MdLogin } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 import { userLogin } from '../../API/login'
 import Loading from '../../Components/Loading/Loading'
@@ -7,11 +8,11 @@ import { IUser } from '../../Interfaces/IUser'
 import './login.sass'
 
 const Login = () => {
-	const initialLogin: IUser = { user: '', password: '' }
-	const [login, setLogin] = useState<IUser>(initialLogin)
+	const [login, setLogin] = useState<IUser>({ user: '', password: '' })
 	const [loading, setLoading] = useState<boolean>(false)
 
 	const [error, setError] = useState<boolean>(false)
+	const navigate = useNavigate()
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setError(false)
@@ -22,12 +23,9 @@ const Login = () => {
 		setLoading(true)
 		const fetchLogin = async () => {
 			const response = await userLogin(login)
-			console.log(response)
-			if (response === 'error') {
-				setError(true)
-			}
+			response ? navigate('/cart') : setError(true)
+
 			setLoading(false)
-			setLogin(initialLogin)
 		}
 
 		fetchLogin()
