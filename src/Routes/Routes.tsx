@@ -1,18 +1,30 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Cart from '../View/Cart/Cart'
 import Login from '../View/Login/Login'
 import Main from '../View/Main/Main'
 import ProductView from '../View/Product/ProductView'
+import View from '../View/View'
+import { isAuthenticated } from './auth'
 
-const AppRoutes = () => {
+const PrivateRoute = () =>
+	isAuthenticated() ? <Cart /> : <Navigate to="/login" />
+
+export const LoginRoutes = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<Login />} />
-			<Route path="/products" element={<Main />} />
-			<Route path="/products/:id" element={<ProductView />} />
-			<Route path="/cart" element={<Cart />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/*" element={<View />} />
 		</Routes>
 	)
 }
-export default AppRoutes
+
+export const AppRoutes = () => {
+	return (
+		<Routes>
+			<Route path="/" element={<Main />} />
+			<Route path="/products/:id" element={<ProductView />} />
+			<Route path="/cart" element={<PrivateRoute />} />
+		</Routes>
+	)
+}
