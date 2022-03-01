@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import { getListProducts } from '../../API/products'
 import Categories from '../../Components/Categories/Categories'
+import Loading from '../../Components/Loading/Loading'
 import ProductCard from '../../Components/PoductCard/ProductCard'
 import Select from '../../Components/Select/Select'
 import { ProductOrder } from '../../Constants/ProductOrder'
@@ -68,9 +69,15 @@ const Main = () => {
 			</div>
 
 			<div className="list-products">
-				{products.map((product) => {
-					return <ProductCard product={product} key={product.id} />
-				})}
+				{products.length === 0 ? (
+					<Loading color="#2553e9" />
+				) : (
+					products.map((product) => {
+						return (
+							<ProductCard product={product} key={product.id} />
+						)
+					})
+				)}
 			</div>
 		</div>
 	)
