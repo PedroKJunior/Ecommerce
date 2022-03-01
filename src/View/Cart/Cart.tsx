@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaRegSadTear } from 'react-icons/fa'
+import { MdDelete } from 'react-icons/md'
 
 import Counter from '../../Components/Counter/Counter'
 import { cartContext } from '../../Store/CartContext'
@@ -101,6 +102,7 @@ const Cart = () => {
 		})
 		setProducts(auxArray)
 	}
+
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = Number(event.target.value)
 		const id = Number(event.currentTarget.dataset.id)
@@ -116,6 +118,11 @@ const Cart = () => {
 			})
 			setProducts(auxArray)
 		}
+	}
+
+	const clickRemove = (id: number) => {
+		setRemove(id)
+		setShow(true)
 	}
 
 	return (
@@ -142,6 +149,14 @@ const Cart = () => {
 									handleRemove={handleRemove}
 									handleChange={handleChange}
 								/>
+								<button className="delete">
+									<MdDelete
+										size={20}
+										onClick={() => {
+											clickRemove(product.id)
+										}}
+									/>
+								</button>
 							</li>
 						))}
 					</ul>
