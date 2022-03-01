@@ -7,18 +7,18 @@ interface IProviderContext {
 }
 
 interface ICart {
-	products?: Array<Product>
-	add?(product: Product): void
-	remove?(id: number): void
+	products: Array<Product>
+	add(product: Product): void
+	remove(id: number): void
 }
 
-const CartContext = createContext<ICart>({})
+const CartContext = createContext<ICart>(null as any)
 
 export const CartContextProvider = ({ children }: IProviderContext) => {
 	const [products, setProducts] = useState<Product[]>([])
 
 	const add = (product: Product) => {
-		const arrayAux = products
+		const arrayAux = [...products]
 		arrayAux.push(product)
 		setProducts(arrayAux)
 	}
@@ -35,4 +35,4 @@ export const CartContextProvider = ({ children }: IProviderContext) => {
 	)
 }
 
-export const cartContext = useContext(CartContext)
+export const cartContext = () => useContext(CartContext)
