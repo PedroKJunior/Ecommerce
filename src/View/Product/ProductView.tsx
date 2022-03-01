@@ -5,10 +5,12 @@ import { useParams } from 'react-router-dom'
 import { getOneProduct } from '../../API/products'
 import BarRating from '../../Components/Rating/BarRating'
 import { Product } from '../../Interfaces/IProducts'
+import { cartContext } from '../../Store/CartContext'
 import './productView.sass'
 
 const ProductView = () => {
-	const [product, setProdutc] = useState<Product>()
+	const cart = cartContext()
+	const [product, setProdutc] = useState<Product>(null as any)
 	const { id = '1' } = useParams()
 
 	useEffect(() => {
@@ -19,6 +21,10 @@ const ProductView = () => {
 
 		fetchProduct()
 	}, [id])
+
+	const handleClick = () => {
+		cart.add(product)
+	}
 
 	return (
 		<div className="content-product-view">
@@ -38,7 +44,7 @@ const ProductView = () => {
 					<div className="price">U$ {product?.price}</div>
 					<div className="description">{product?.description} </div>
 					<div className="content-button">
-						<button>
+						<button onClick={handleClick}>
 							<RiShoppingCartFill size={20} />
 							Adicionar ao Carrinho
 						</button>
