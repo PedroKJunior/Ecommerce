@@ -26,7 +26,7 @@ const MainMenu: React.FC = () => {
 
 	return (
 		<div className="main-menu">
-			<Link to="/products">
+			<Link to="/">
 				<h1 className="logo">Magazine</h1>
 			</Link>
 			<SearchMenu onClick={searchItem} onInputChange={handleChange} />
